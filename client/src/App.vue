@@ -16,6 +16,7 @@ import Navbar from './components/Navbar.vue'
 import CategoriesNavbar from './components/CategoriesNavbar.vue'
 import LandingPage from './components/LandingPage.vue'
 import PropertyCard from './components/PropertyCard.vue'
+import Login from './components/Login.vue'
 
 export default {
   name: 'App',

@@ -2,14 +2,14 @@
     <nav class="navbar">
       <div class="container">
         <a class="navbar-brand" href="/">
-          <!-- Aquí puedes agregar un logo o un nombre -->
           <img src="https://vuejs.org/images/logo.png" alt="Vue.js" width="30" height="30" />
+          <span>Vue.js</span>
         </a>
         <div class="navbar-menu">
           <a class="navbar-item" href="/inicio">
             Inicio
           </a>
-          <a class="navbar-item" href="/acerca-de">
+          <a class="navbar-item" href="/modal">
             Acerca de
           </a>
           <a class="navbar-item" href="/contacto">
