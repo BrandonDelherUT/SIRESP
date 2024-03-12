@@ -150,24 +150,22 @@
         <span>Vue.js</span>
       </a>
       <div class="navbar-menu">
-        <a class="navbar-item" href="/inicio">
+        <a class="navbar-item" href="/login">
           Inicio
         </a>
         <a class="navbar-item" href="/about">
           Acerca de
         </a>
-        <!-- Modal registro -->
-        <a class="navbar-item" @click="showModal = true">Registrarse</a><!-- Botón de registro -->
-        <b-button @click="showModal = true" variant="primary">Registrar</b-button>
+       
 
 
         <!-- Perfil dropdown -->
         <div class="dropdown">
-          <a class="navbar-item dropdown-toggle" href="#" @click.prevent="toggleDropdown">Perfil</a>
+          <a class="navbar-item dropdown-toggle" href="#" @click.prevent="toggleDropdown">Iniciar Sesión</a>
           <div class="dropdown-menu" v-if="isDropdownOpen">
-            <a class="dropdown-item" href="/perfil">Ver perfil</a>
-            <a class="dropdown-item" href="/configuracion">Configuración</a>
-            <a class="dropdown-item" href="/cerrar-sesion">Cerrar sesión</a>
+            <a class="dropdown-item" href="/login">Iniciar Sesión</a>
+             <!-- Modal registro -->
+            <a class="dropdown-item" @click="showModal = true">Registrarse</a>
           </div>
         </div>
 
