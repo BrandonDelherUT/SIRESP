@@ -1,30 +1,21 @@
 <template>
   <div id="app">
-    <Navbar/>
-    
-    <CategoriesNavbar/>
-    <div>
 
-      <PropertyCard :properties="properties"/>
-    <!-- El resto de tu contenido aquí -->
-    </div>
+    <router-view/>
+
   </div>
+
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue'
 import CategoriesNavbar from './components/CategoriesNavbar.vue'
-import LandingPage from './components/LandingPage.vue'
-import PropertyCard from './components/PropertyCard.vue'
-import Login from './components/Login.vue'
 
 export default {
   name: 'App',
   components: {
     Navbar,
     CategoriesNavbar,
-    LandingPage,
-    PropertyCard
   },
   data() {
     return {
@@ -69,4 +60,4 @@ export default {
   }
 
 }
-</script>
+</script>./views/Login.vue

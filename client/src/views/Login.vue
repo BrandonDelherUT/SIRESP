@@ -1,7 +1,9 @@
+import Navbar from '@/components/Navbar.vue';
 <template>
-  <body >
-    <div id="overlay">
-      <b-container class="bv-example-row ">
+  <div>
+    <Navbar />
+    <CategoriesNavbar />
+      <b-container fluid>
         <b-row class="text-center">
           <b-col></b-col>
           <b-col cols="8">
@@ -30,14 +32,20 @@
           <b-col></b-col>
         </b-row>
       </b-container>
-    </div>
-  </body>
+  </div>
   </template>
 
 
   <script>
+
+  import Navbar from '../components/Navbar.vue';
+  import CategoriesNavbar from '../components/CategoriesNavbar.vue';
   
   export default {
+    components: {
+      Navbar,
+      CategoriesNavbar
+    },
     data() {
       return {
         email: '',

@@ -1,7 +1,6 @@
 <template>
     <div>
-      <!-- Botón de registro -->
-      <b-button @click="showModal = true" variant="primary">Registrar</b-button>
+      
   
       <!-- Modal -->
       <b-modal  v-model="showModal" title="Registro de Usuario" hide-footer size="lg" modal-class="custom-modal" header-bg-variant="warning" >

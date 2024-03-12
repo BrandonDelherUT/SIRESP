@@ -34,7 +34,8 @@
   
   <style scoped>
   .accordion {
-  /* Estilos del contenedor del acordeón */
+    margin: 20px 0;
+
 }
 
 .panel {
@@ -46,7 +47,17 @@
 }
 
 .header {
-  /* Estilos para el encabezado de cada panel */
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+  background-color: #ddd;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  position: relative;
 }
 
 .body {

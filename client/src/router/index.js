@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../components/Login.vue'
-import Modal from '../components/Modal.vue'
+import AboutView from '../views/AboutView.vue'
+import Login from '../views/Login.vue'
+import Login2 from '../views/Login2.vue'
 
 Vue.use(VueRouter)
 
@@ -12,12 +13,17 @@ const router = new VueRouter({
     {
       path: '/',
       name: 'home',
-      component: Login
+      component: AboutView
     },
     {
-      path: '/modal',
-      name: 'modal',
-      component: Modal
+      path: '/about',
+      name: 'about',
+      component: AboutView
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login2
     }
   ]
 })

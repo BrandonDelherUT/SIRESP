@@ -9,12 +9,14 @@
           <a class="navbar-item" href="/inicio">
             Inicio
           </a>
-          <a class="navbar-item" href="/modal">
+          <a class="navbar-item" href="/about">
             Acerca de
           </a>
-          <a class="navbar-item" href="/contacto">
-            Contacto
-          </a>
+          <!-- Modal registro -->
+          <a class="navbar-item" @click="showModal = true">Registrarse</a><!-- Botón de registro -->
+          <b-button @click="showModal = true" variant="primary">Registrar</b-button>
+
+
           <!-- Perfil dropdown -->
           <div class="dropdown">
             <a class="navbar-item dropdown-toggle" href="#" @click.prevent="toggleDropdown">Perfil</a>
@@ -28,6 +30,7 @@
         </div>
       </div>
     </nav>
+    
   </template>
   
   <style scoped>
@@ -90,7 +93,13 @@
   </style>
   
   <script>
+  import Modal from './Modal.vue';
+
   export default {
+    name: 'Navbar',
+    components: {
+      Modal,
+    },
     data() {
       return {
         isDropdownOpen: false,
