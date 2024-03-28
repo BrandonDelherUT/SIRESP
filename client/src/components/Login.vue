@@ -1,7 +1,7 @@
 <template>
-  <body >
+  <body>
     <div id="overlay">
-      <b-container class="bv-example-row ">
+      <b-container class="bv-example-row">
         <b-row class="text-center">
           <b-col></b-col>
           <b-col cols="8">
@@ -70,13 +70,12 @@ body {
 
 
 #overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: center;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 255, 0.392);
   z-index: -1; 
+  left: 80%;
 }
 
 </style>

@@ -4,6 +4,10 @@
     
     <CategoriesNavbar />
     <Navbar />
+
+    <!--Boton de pago-->
+    <b-button variant="primary" href="/pago">Pagar</b-button>
+
   </div>
 </template>
 

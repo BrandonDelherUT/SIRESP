@@ -1,70 +1,95 @@
 <template>
-    <b-container fluid >
+  <b-modal id="login" title="Iniciar sesión" hide-footer centered>
+    <b-container fluid>
       <b-row>
         <b-col>
-          <b-card title="Inicio de Sesión">
-            <b-form @submit.prevent="onSubmit">
-              <b-form-group
-                label="Correo electrónico:"
-                label-for="email-input"
-                invalid-feedback="El correo electrónico es obligatorio"
-                :state="validateEmail(email)">
-                <b-form-input
-                  id="email-input"
-                  type="email"
-                  v-model="email"
-                  required
-                  placeholder="Ingrese su correo electrónico"
-                  :state="validateEmail(email)">
-                </b-form-input>
-              </b-form-group>
-  
-              <b-form-group
-                label="Contraseña:"
-                label-for="password-input"
-                invalid-feedback="La contraseña es obligatoria"
-                :state="password.length > 0">
-                <b-form-input
-                  id="password-input"
-                  type="password"
-                  v-model="password"
-                  required
-                  placeholder="Ingrese su contraseña"
-                  :state="password.length > 0">
-                </b-form-input>
-              </b-form-group>
-  
-              <b-button type="submit" variant="primary">Iniciar sesión</b-button>
-            </b-form>
-          </b-card>
+          <b-form>
+            <b-form-group>
+              <b-form-input
+                id="email"
+                v-model="credentials.email"
+                type="email"
+                placeholder="Correo electrónico"
+                required
+              >
+              </b-form-input>
+            </b-form-group>
+            <b-form-group>
+              <b-form-input
+                id="password"
+                v-model="credentials.password"
+                type="password"
+                placeholder="Contraseña"
+                required
+              >
+              </b-form-input>
+            </b-form-group>
+            <b-form-group class="custom-form-group">
+              <b-link @click="forgotPassword" class="custom-link"
+                >¿Haz olvidado tu contraseña?</b-link
+              >
+            </b-form-group>
+            <b-button type="submit" class="custom-button" block
+              >Iniciar sesión</b-button
+            >
+          </b-form>
         </b-col>
       </b-row>
+      <b-row class="mt-2 custom-form-group">
+        <b-col>
+          ¿No tienes una cuenta?
+          <b-link @click="redirectSignUp" class="custom-link">
+            <strong>Registrate</strong>
+          </b-link>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-link @click="modalUno" class="custom-link">
+        <strong>Prueba</strong>
+      </b-link>
+      </b-row>
+      <RecoverPassword />
+      <CreateAccount />
+      <ModalUno />
     </b-container>
-  </template>
-  
-  <script>
-  export default {
-    name: 'LoginForm',
-    data() {
-      return {
-        email: '',
-        password: ''
-      }
-    },
-    methods: {
-      validateEmail(email) {
-        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(email);
+  </b-modal>
+</template>
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({
+  name: "Login",
+  components: {
+  },
+  data() {
+    return {
+      credentials: {
+        email: "",
+        password: "",
       },
-      onSubmit() {
-        if (this.validateEmail(this.email) && this.password.length > 0) {
-          alert(`Email: ${this.email}, Password: ${this.password}`);
-          // Aquí deberías agregar la lógica para la autenticación
-        } else {
-          alert('Por favor, ingresa un correo electrónico y contraseña válidos.');
-        }
-      }
-    }
-  }
-  </script>
-  
+    };
+  },
+  methods: {
+    forgotPassword() {
+      this.$root.$emit("bv::toggle::modal", "recoverPassword");
+    },
+    redirectSignUp() {
+      this.$root.$emit("bv::toggle::modal", "createAccount");
+    },
+    modalUno() {
+      this.$root.$emit("bv::toggle::modal", "modalUno");
+    },
+  },
+});
+</script>
+<style>
+.custom-form-group {
+  text-align: center;
+}
+.custom-link {
+  color: black;
+}
+.custom-button {
+  background-color: #353942;
+}
+</style>

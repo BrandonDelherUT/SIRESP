@@ -142,47 +142,112 @@
         </div>
       </b-form>
     </b-modal>
+    <!-- Modal Inicio de Sesión -->
+    <b-modal
+      v-model="showLoginModal"
+      title="Inicio de Sesión"
+      hide-footer
+      size="md"
+      modal-class="custom-modal"
+      header-bg-variant="info"
+    >
+      <b-form @submit.prevent="onLoginSubmit" class="modal-form">
+        <b-row>
+          <b-col cols="12">
+            <b-form-group label="Correo electrónico">
+              <b-form-input
+                v-validate="'required|email'"
+                name="loginEmail"
+                v-model="loginEmail"
+                type="email"
+                placeholder="Ingrese su correo electrónico"
+              />
+              <span class="text-danger">{{ errors.first("loginEmail") }}</span>
+            </b-form-group>
+          </b-col>
+        </b-row>
 
-  <nav class="navbar">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <img src="https://vuejs.org/images/logo.png" alt="Vue.js" width="30" height="30" />
-        <span>Vue.js</span>
-      </a>
-      <div class="navbar-menu">
-        <a class="navbar-item" href="/login">
-          Inicio
-        </a>
-        <a class="navbar-item" href="/about">
-          Acerca de
-        </a>
-       
+        <b-row>
+          <b-col cols="12">
+            <b-form-group label="Contraseña">
+              <b-form-input
+                v-validate="'required|min:8'"
+                name="loginPassword"
+                v-model="loginPassword"
+                type="password"
+                placeholder="Ingrese su contraseña"
+              />
+              <span class="text-danger">{{ errors.first("loginPassword") }}</span>
+            </b-form-group>
+          </b-col>
+        </b-row>
 
-
-        <!-- Perfil dropdown -->
-        <div class="dropdown">
-          <a class="navbar-item dropdown-toggle" href="#" @click.prevent="toggleDropdown">Iniciar Sesión</a>
-          <div class="dropdown-menu" v-if="isDropdownOpen">
-            <a class="dropdown-item" href="/login">Iniciar Sesión</a>
-             <!-- Modal registro -->
-            <a class="dropdown-item" @click="showModal = true">Registrarse</a>
-          </div>
+        <!-- Botón Iniciar Sesión -->
+        <div class="text-center">
+          <b-button type="submit" variant="info">Iniciar Sesión</b-button>
         </div>
+      </b-form>
+    </b-modal>
 
+    <nav class="navbar">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="https://vuejs.org/images/logo.png" alt="Vue.js" width="30" height="30" />
+          <span>Vue.js</span>
+        </a>
+        <div class="navbar-menu">
+          <a class="navbar-item" href="/plantilla">
+            Inicio
+          </a>
+          <a class="navbar-item" href="/about">
+            Acerca de
+          </a>
+          <!--Dropdown perfil-->
+          <div class="dropdown" v-if="!isMobile">
+            <a
+              class="navbar-item"
+              href="#"
+              @click="toggleDropdown"
+              >Perfil <b-icon icon="caret-down" /></a
+             </a>
+            <div
+              class="dropdown-menu"
+              v-if="isDropdownOpen"
+              @click="toggleDropdown"
+            >
+            <a class="dropdown-item"
+              v-on:click="showLoginModal = true"
+            >Iniciar Sesión</a>
+            <a class="dropdown-item" href="/register">Registrarse</a>
+
+            </div>
+          </div>
+          <!-- Contenido omitido para brevedad -->
+        </div>
+        <div class="bottom-tab-nav" v-if="isMobile">
+          <a class="tab-item" href="/perfil">
+            <b-icon icon="house-door" font-scale="1.5"></b-icon>
+            <span>Inicio</span>
+          </a>
+          <a class="tab-item" href="/about">
+            <b-icon icon="info-circle" font-scale="1.5"></b-icon>
+            <span>Acerca de</span>
+          </a>
+          <a class="tab-item" href="/plantilla">
+            <b-icon icon="person" font-scale="1.5"></b-icon>
+            <span>Perfil</span>
+          </a>
+
+          <!-- Agrega más elementos según necesites -->
+        </div>
       </div>
-    </div>
-
-    
-
-  </nav>
-
+    </nav>
   </div>
-
 </template>
 
 <style scoped>
 .navbar {
-  background-color: #333;
+  background-color: #007bff; /* Color azul */
   color: white;
   padding: 0.5rem 1rem;
   position: fixed;
@@ -197,6 +262,13 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+
+.navbar-toggler {
+  display: none; /* Ocultar el botón por defecto */
+  background: none;
+  border: none;
+  color: white;
 }
 
 .navbar-brand,
@@ -217,7 +289,7 @@
 
 .navbar-item:hover,
 .dropdown-item:hover {
-  background-color: #555;
+  background-color: #0056b3; /* Azul más oscuro */
 }
 
 .dropdown {
@@ -226,7 +298,6 @@
 
 .dropdown-menu {
   display: block;
-  /* Cambiado para usar v-if en lugar de CSS hover */
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
@@ -240,7 +311,40 @@
   text-decoration: none;
   display: block;
 }
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+  }
+
+  .bottom-tab-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #007bff; /* Color azul */
+    color: white;
+    padding: 0.5rem 0;
+    z-index: 1000;
+  }
+
+  .tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+  }
+
+  .tab-item span {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+  }
+}
 </style>
+
 
 <script>
 import Modal from './Modal.vue';
@@ -254,6 +358,8 @@ export default {
     return {
       isDropdownOpen: false,
       showModal: false, // Estado del modal
+      showLoginModal: false, // Estado del modal de inicio de sesión
+      showLoginModal2: false, // Estado del modal de inicio de sesión 2
       name: "",
       surname: "",
       email: "",
@@ -262,7 +368,15 @@ export default {
       telephone: "",
       gender: "",
       profileImage: null,
+      isMobile: window.innerWidth <= 768,
     };
+  },
+  
+  mounted() {
+    window.addEventListener('resize', this.handleResize);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.handleResize);
   },
   methods: {
     toggleDropdown() {
@@ -276,6 +390,23 @@ export default {
           this.showModal = false; // Cierra el modal después de enviar el formulario
         }
       });
+    },
+    onLoginSubmit() {
+      this.$validator.validate().then((valid) => {
+        if (!valid) {
+          // Manejar la validación fallida
+        } else {
+          // Procesar inicio de sesión
+          console.log('Email:', this.loginEmail, 'Password:', this.loginPassword);
+          this.showLoginModal = false; // Cierra el modal después de intentar iniciar sesión
+        }
+      });
+    },
+    handleResize() {
+      this.isMobile = window.innerWidth <= 768;
+    },
+    hideLoginModal() {
+      this.showLoginModal = false;
     },
   },
 };
