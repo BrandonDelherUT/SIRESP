@@ -2,13 +2,14 @@
   <div>
     <!-- Modal -->
     <b-modal
-      v-model="showModal"
-      title="Registro de Usuario"
-      hide-footer
-      size="lg"
-      modal-class="custom-modal"
-      header-bg-variant="success"
-    >
+  v-model="showModal"
+  title="Registro de Usuario"
+  hide-footer
+  size="lg"
+  modal-class="custom-modal"
+  header-bg-variant="dark" header-text-variant="light" footer-bg-variant="dark" footer-text-variant="light"
+  style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"
+>
       <b-form @submit.prevent="onSubmit" class="modal-form">
         <b-row>
           <b-col cols="6">
@@ -148,8 +149,7 @@
       title="Inicio de Sesión"
       hide-footer
       size="md"
-      modal-class="custom-modal"
-      header-bg-variant="info"
+      header-bg-variant="dark" header-text-variant="light" footer-bg-variant="dark" footer-text-variant="light"
     >
       <b-form @submit.prevent="onLoginSubmit" class="modal-form">
         <b-row>
@@ -184,7 +184,7 @@
 
         <!-- Botón Iniciar Sesión -->
         <div class="text-center">
-          <b-button type="submit" variant="info">Iniciar Sesión</b-button>
+          <b-button type="submit" variant="primary">Iniciar Sesión</b-button>
         </div>
       </b-form>
     </b-modal>
@@ -343,6 +343,7 @@
     margin-top: 0.25rem;
   }
 }
+
 </style>
 
 

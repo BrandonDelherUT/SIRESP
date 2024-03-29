@@ -1,5 +1,5 @@
 <template>
-  <b-modal id="login" title="Iniciar sesión" hide-footer centered>
+  <b-modal id="login" title="Iniciar sesión" header-bg-variant="dark" header-text-variant="light" footer-bg-variant="dark" footer-text-variant="light">
     <b-container fluid>
       <b-row>
         <b-col>

@@ -277,6 +277,14 @@ export default {
             fechaSalida: '',
             numHuespedes: 1,
             error: '',
+            
+        categories: [
+          // Datos de ejemplo
+          { id: 1, name: 'Casas' },
+          { id: 2, name: 'Apartamentos' },
+          { id: 3, name: 'Playa' },
+          { id: 4, name: 'Villas' },
+        ],
             attrs: [
                 {
                     highlight: {

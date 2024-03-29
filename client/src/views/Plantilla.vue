@@ -19,6 +19,17 @@
         Navbar,
         CategoriesNavbar,
         BusquedaAlojamientos
+      },
+      data() {
+        return {
+          categories: [
+            // Datos de ejemplo
+            { id: 1, name: 'Casas', icon: 'house-fill' },
+            { id: 2, name: 'Apartamentos', icon: 'building' },
+            { id: 3, name: 'Playa', icon: 'umbrella' },
+            { id: 4, name: 'Villas', icon: 'tree' }
+          ]
+        };
       }
     }
 

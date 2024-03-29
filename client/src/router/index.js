@@ -6,10 +6,12 @@ import JavaWebTkn from '../views/JavaWebTkn.vue'
 import UserLoginJWT from '../views/UserLoginJWT.vue'
 import Pago from '../views/PagoView.vue'
 import Plantilla from '../views/Plantilla.vue'
-import InfoReserva from '../views/InfoAlojamiento.vue'
 import InfoAlojamiento from '../views/InfoAlojamiento.vue'
 import ReviewModal from '../components/ReviewModal.vue'
 import CancelarReserva from '../components/cancelarReserva.vue'
+import AdministracionCategoriasView from '../views/AdministracionCategoriasView.vue'
+import HistVerifAnfView from '../views/HistVerifAnfView.vue'
+import HistVerifAlojView from '../views/HistVerifAlojView.vue'
 
 Vue.use(VueRouter)
 
@@ -66,7 +68,23 @@ const router = new VueRouter({
       path: '/cancelarreserva',
       name: 'cancelarreserva',
       component: CancelarReserva
+    },
+    {
+      path: '/administracion-categorias',
+      name: 'administracion-categorias',
+      component: AdministracionCategoriasView
+    },
+    {
+      path: '/hist-anfitrion',
+      name: 'hist-anfitrion',
+      component: HistVerifAnfView
+    },
+    {
+      path: '/hist-alojamiento',
+      name: 'hist-alojamiento',
+      component: HistVerifAlojView
     }
+    
 
 
   ]

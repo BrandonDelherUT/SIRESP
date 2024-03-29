@@ -1,24 +1,27 @@
 <template>
   <div class="categories-navbar">
-    <div class="category-item">
-      <b-icon icon="house-fill" font-scale="2"></b-icon>
-      <span>Casas</span>
+    <div class="category-item" v-for="category in categories" :key="category.id">
+      <b-icon :icon="category.icon" font-scale="2"></b-icon>
+      <span>{{ category.name }}</span>
     </div>
-    <div class="category-item">
-      <b-icon icon="building" font-scale="2"></b-icon>
-      <span>Apartamentos</span>
-    </div>
-    <div class="category-item">
-      <b-icon icon="umbrella" font-scale="2"></b-icon>
-      <span>Playa</span>
-    </div>
-    <div class="category-item">
-      <b-icon icon="tree" font-scale="2"></b-icon>
-      <span>Villas</span>
-    </div>
-    <!-- Agrega más categorías según necesites -->
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    categories: {
+      type: Array,
+      default: () => [
+        { id: 1, name: 'Casas', icon: 'house-fill' },
+        { id: 2, name: 'Apartamentos', icon: 'building' },
+        { id: 3, name: 'Playa', icon: 'umbrella' },
+        { id: 4, name: 'Villas', icon: 'tree' }
+      ]
+    }
+  }
+}
+</script>
 
 <style scoped>
 .categories-navbar {
