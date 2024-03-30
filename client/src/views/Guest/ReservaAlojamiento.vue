@@ -1,7 +1,8 @@
 <template>
     <div>
-        <Navbar />
         <CategoriesNavbar />
+        <NavbarUser />
+        
         <div class="container-fluid">
             <div class="row mt-5 justify-content-center">
                 <div class="col-md-12">
@@ -166,11 +167,6 @@
                             <hr>
                             <vc-calendar is-expanded :columns="$screens({ default: 1, lg: 2 })"  :attributes="attrs" />
                         </b-col>
-                        <b-col cols="12">
-                            <vc-calendar
-                            :attributes='attributes'
-                            />
-                        </b-col>
                     </b-row>
                     <b-row class="mt-5">
                         <b-col cols="12">
@@ -260,13 +256,14 @@
 
 
 <script>
-import Navbar from "../components/Navbar.vue";
-import CategoriesNavbar from "../components/CategoriesNavbar.vue";
+
+import CategoriesNavbar from "../../components/Inicio/CategoriesNavbar.vue";
+import NavbarUser from "../../components/Inicio/NavbarUser.vue";
 
 export default {
     name: 'AboutView',
     components: {
-        Navbar,
+        NavbarUser,
         CategoriesNavbar
     },
     data() {
@@ -416,8 +413,7 @@ export default {
             }
 
             this.error = '';
-
-            console.log("Fechas válidas. Fecha de llegada:", fechaLlegada, "Fecha de salida:", fechaSalida);
+            window.location.href = "https://buy.stripe.com/test_5kA4hM80Da1uaKk288"
 
         }
 

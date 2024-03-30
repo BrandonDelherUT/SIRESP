@@ -97,18 +97,17 @@
           <span>Vue.js</span>
         </a>
         <div class="navbar-menu">
-          <a class="navbar-item" href="/plantilla">
+          <a class="navbar-item" href="/">
             Inicio
           </a>
-          <a class="navbar-item" href="/about">
-            Acerca de
-          </a>
+         
 
           <div class="dropdown" v-if="!isMobile">
             <a class="navbar-item" href="#" @click="toggleDropdown">Perfil <b-icon icon="caret-down" /></a>
             <div class="dropdown-menu" v-if="isDropdownOpen" @click="toggleDropdown">
-              <a class="dropdown-item" v-on:click="showModal = true">Modificar</a>
-              <a class="dropdown-item" href="/logout">Cerrar Sesión</a>
+              <a class="dropdown-item" href="/perfil">Ver Perfil</a>
+              <a class="dropdown-item" v-on:click="showModal = true">Modificar Perfil</a>
+              <a class="dropdown-item" href="/">Cerrar Sesión</a>
             </div>
           </div>
 

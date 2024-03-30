@@ -1,7 +1,7 @@
 <template>
     <b-container fluid>
     <CategoriesNavbar />
-    <Navbar />
+    <NavbarUser />
     <div class="main-content">
         <Pago />
     </div>
@@ -9,14 +9,14 @@
   </template>
   
   <script>
-    import Navbar from "../components/Navbar.vue";
-    import CategoriesNavbar from "../components/CategoriesNavbar.vue";
-    import Pago from "../components/Pago.vue";
+    import NavbarUser from "../../components/Inicio/NavbarUser.vue";
+    import CategoriesNavbar from "../../components/Inicio/CategoriesNavbar.vue";
+    import Pago from "../../components/PagoView/Pago.vue";
 
     export default {
       name: 'Plantilla',
       components: {
-        Navbar,
+        NavbarUser,
         CategoriesNavbar,
         Pago
       }

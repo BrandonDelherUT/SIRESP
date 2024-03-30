@@ -13,6 +13,7 @@
     "bootstrap": "^4.6.2",
     "bootstrap-vue": "^2.23.1",
     "jwt-decode": "4.0.0",
+    "stripe": "^14.23.0",
     "v-calendar": "^2.4.2",
     "vee-validate": "^2.2.15",
     "vue": "^2.7.16",

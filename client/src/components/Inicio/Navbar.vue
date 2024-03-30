@@ -126,12 +126,10 @@
           <span>Vue.js</span>
         </a>
         <div class="navbar-menu">
-          <a class="navbar-item" href="/plantilla">
+          <a class="navbar-item" href="/">
             Inicio
           </a>
-          <a class="navbar-item" href="/about">
-            Acerca de
-          </a>
+       
 
           <div class="dropdown" v-if="!isMobile">
             <a class="navbar-item" href="#" @click="toggleDropdown">Perfil <b-icon icon="caret-down" /></a>
