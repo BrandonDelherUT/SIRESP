@@ -5,6 +5,8 @@ import router from './router'
 import VeeValidate  from 'vee-validate'
 import { Validator } from 'vee-validate';
 
+import VCalendar from 'v-calendar';
+
 import './assets/main.css'
 
 import { BootstrapVue, IconsPlugin, BootstrapVueIcons } from 'bootstrap-vue'
@@ -16,6 +18,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
 
+Vue.use(VCalendar, {
+  componentPrefix: 'vc',  // Use <vc-calendar /> instead of <v-calendar />
+});
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
