@@ -35,9 +35,9 @@ export default {
   z-index: 1000;
   display: flex;
   justify-content: center;
-  flex-wrap: nowrap; /* Cambiado para evitar el salto de línea */
-  overflow-x: auto; /* Permite el desplazamiento horizontal */
-  -webkit-overflow-scrolling: touch; /* Mejora el desplazamiento en dispositivos táctiles */
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .category-item {
@@ -51,7 +51,7 @@ export default {
 
 .category-item span {
   margin-top: 0.5rem;
-  color: #007bff; /* Cambiado a azul */
+  color: #007bff;
 }
 
 .category-item:hover {
@@ -62,12 +62,6 @@ export default {
 
 .category-item b-icon {
   margin-bottom: 0.5rem;
-  color: #007bff; /* Cambiado a azul */
-}
-
-@media (max-width: 768px) {
-  .category-item b-icon {
-    font-scale: 1.5; /* Reduce el tamaño de los iconos en dispositivos móviles */
-  }
+  color: #007bff;
 }
 </style>

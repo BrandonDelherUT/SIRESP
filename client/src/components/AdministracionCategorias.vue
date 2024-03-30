@@ -7,7 +7,7 @@
       </b-row>
       <b-row>
         <b-col>
-          <b-button variant="primary" @click="showAddModal = true">Agregar  Categoría</b-button>
+          <b-button variant="primary" @click="showAddModal = true">Agregar Categoría</b-button>
         </b-col>
       </b-row>
       <b-row class="mt-3">

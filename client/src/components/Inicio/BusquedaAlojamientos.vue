@@ -1,7 +1,7 @@
 <template>
   <b-container fluid class="airbnb-container">
     <div class="row">
-      <div class="col-md-3" >
+      <div class="col-md-3">
         <div class="filters">
           <b-form-group label="Ubicación" class="airbnb-form-group">
             <b-form-input v-model="searchLocation" @input="filterData" placeholder="Ej: Ciudad, País"></b-form-input>
@@ -15,14 +15,16 @@
           <b-form-group label="Número de huéspedes" class="airbnb-form-group">
             <b-form-input v-model="searchGuests" type="number" @input="filterData"></b-form-input>
           </b-form-group>
-          <b-button variant="primary"  @click="buscar" class="airbnb-button">Buscar</b-button>
+          <b-button variant="primary" @click="buscar" class="airbnb-button">Buscar</b-button>
         </div>
       </div>
       <div class="col-md-9">
         <div class="row mt-4">
           <div class="col-md-4 col-sm-6 mb-4" v-for="(myDataa, index) in myData" :key="index">
             <div class="card h-100 airbnb-card">
-              <div class="card-img-top airbnb-card-img-top" :style="{ backgroundImage: `url(${myDataa.imagen})` }"></div><div class="card-body">
+              <div class="card-img-top airbnb-card-img-top" :style="{ backgroundImage: `url(${myDataa.imagen})` }">
+              </div>
+              <div class="card-body">
                 <h5 class="card-title airbnb-card-title">{{ myDataa.nombre }}</h5>
                 <p class="card-text airbnb-card-text"><strong>Ubicación: </strong>{{ myDataa.autor }}</p>
                 <p class="card-text airbnb-card-text"><strong>Número de huéspedes: </strong>{{ myDataa.fechaPub }}</p>
@@ -78,7 +80,7 @@ export default {
   background-color: #f7f7f7;
   border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position:static;
+  position: static;
   top: 80px;
 }
 
@@ -87,24 +89,24 @@ export default {
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position:fixed;
+  position: fixed;
 }
 
 
-@media screen and (max-width: 1120px){
+@media screen and (max-width: 1120px) {
   .filters {
     position: fixed;
     width: 200px;
   }
-  
+
 }
 
 @media screen and (max-width: 900px) {
   .filters {
     position: static;
-    width: auto; /* Ajusta el ancho al contenedor */
+    width: auto;
   }
-  
+
 }
 
 
@@ -144,60 +146,4 @@ export default {
   font-size: 0.9rem;
   padding: 0.5rem 1rem;
 }
-
 </style>
-
-
-<!-- <script>
-import axios from 'axios';
-
-export default {
-  data() {
-    return {
-      myData: [],
-      form: {},
-      showModal: false,
-    }
-  },
-
-  methods: {
-    getData() {
-      axios.get("http://localhost:8080/api/libros/")
-        .then(response => {
-          this.myData = response.data;
-        })
-        .catch(error => {
-          console.error("Error:", error);
-        });
-    },
-    buscarPor(value) {
-      const tipo = value;
-      let url;
-      switch (tipo) {
-        case 'anio':
-          url = `http://localhost:8080/api/libros/fecha`;
-          break;
-        case 'autor':
-          url = `http://localhost:8080/api/libros/autor`;
-          break;
-        case 'foto':
-          url = `http://localhost:8080/api/libros/imagen`;
-          break;
-        default:
-          console.error('Tipo de filtro no válido');
-          return;
-      }
-      axios.get(url)
-        .then(response => {
-          this.myData = response.data;
-        })
-        .catch(error => {
-          console.error("Error:", error);
-        });
-    },
-  },
-  mounted() {
-    this.getData();
-  }
-}
-</script> -->
