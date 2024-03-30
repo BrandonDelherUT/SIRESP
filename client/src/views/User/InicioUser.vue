@@ -1,7 +1,7 @@
 <template>
   <b-container fluid>
     <CategoriesNavbar />
-    <Navbar />
+    <NavbarUser />
     <div class="main-content">
       <BusquedaAlojamientos />
     </div>
