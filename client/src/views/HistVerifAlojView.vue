@@ -14,7 +14,7 @@
     import HistorialVerifAlojamientos from "../components/HistorialVerifAlojamientos.vue"
 
     export default {
-      name: 'Plantilla',
+      name: 'HistorialVerifAlojView',
       components: {
         Navbar,
         CategoriesNavbar,
