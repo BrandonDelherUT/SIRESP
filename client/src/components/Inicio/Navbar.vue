@@ -122,16 +122,14 @@
     <nav class="navbar">
       <div class="container">
         <a class="navbar-brand" href="/">
-          <img src="https://vuejs.org/images/logo.png" alt="Vue.js" width="30" height="30" />
-          <span>Vue.js</span>
+          <img src="../../assets/img/Logo.jpeg" alt="Vue.js" width="40" height="40" />
+          <span class="title">SIRESP</span>
         </a>
-        <div class="navbar-menu">
-          <a class="navbar-item" href="/">
-            Inicio
-          </a>
+        <div class="navbar-menu" :class="{'is-active':'isNavbarOpen'}">
+         
        
 
-          <div class="dropdown" v-if="!isMobile">
+          <div class="dropdown" >
             <a class="navbar-item" href="#" @click="toggleDropdown">Perfil <b-icon icon="caret-down" /></a>
             <div class="dropdown-menu" v-if="isDropdownOpen" @click="toggleDropdown">
               <a class="dropdown-item" v-on:click="showLoginModal = true">Iniciar Sesión</a>
@@ -141,15 +139,11 @@
 
         </div>
         <div class="bottom-tab-nav" v-if="isMobile">
-          <a class="tab-item" href="/perfil">
+          <a class="tab-item" href="/">
             <b-icon icon="house-door" font-scale="1.5"></b-icon>
             <span>Inicio</span>
           </a>
-          <a class="tab-item" href="/about">
-            <b-icon icon="info-circle" font-scale="1.5"></b-icon>
-            <span>Acerca de</span>
-          </a>
-          <a class="tab-item" href="/plantilla">
+          <a class="tab-item" href="/perfil">
             <b-icon icon="person" font-scale="1.5"></b-icon>
             <span>Perfil</span>
           </a>
@@ -170,6 +164,10 @@
   left: 0;
   width: 100%;
   z-index: 1000;
+}
+.title {
+  padding-left: 10px;
+  color: white;
 }
 
 .container {
@@ -228,9 +226,16 @@
 }
 
 @media (max-width: 768px) {
-  .navbar-menu {
-    display: none;
+  .dropdown-menu {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    min-width: initial;
+    max-height: calc(100vh - 50px);
+    overflow-y: auto;
   }
+
 
   .bottom-tab-nav {
     display: flex;
@@ -302,6 +307,9 @@ export default {
           this.showModal = false;
         }
       });
+    },
+    toggleNavbar() {
+      this.isNavbarOpen = !this.isNavbarOpen;
     },
     onLoginSubmit() {
       this.$validator.validate().then((valid) => {

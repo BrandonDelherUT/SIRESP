@@ -44,7 +44,7 @@ export default {
   data() {
     return {
       myData: [
-        { nombre: 'Ejemplo 1', imagen: 'https://via.placeholder.com/200', autor: 'Autor 1', fechaPub: '2023-01-01', precio: '$100' },
+        { nombre: 'Ejemplo 1', imagen: 'https://via.placeholder.com/300', autor: 'Autor 1', fechaPub: '2023-01-01', precio: '$100' },
         { nombre: 'Ejemplo 2', imagen: 'https://via.placeholder.com/300', autor: 'Autor 2', fechaPub: '2023-02-01', precio: '$120' },
         { nombre: 'Ejemplo 3', imagen: 'https://via.placeholder.com/300', autor: 'Autor 3', fechaPub: '2023-03-01', precio: '$150' },
         { nombre: 'Ejemplo 1', imagen: 'https://via.placeholder.com/300', autor: 'Autor 1', fechaPub: '2023-01-01', precio: '$100' },

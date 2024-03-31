@@ -20,51 +20,51 @@
             <b-col cols="12" lg="12" class="text-center">
               <hr>
               <div class="form-group row">
-                <label class="col-sm-6 col-form-label">Nombre:</label>
+                <label class="col-sm-6 col-form-label"><b>Nombre:</b></label>
                 <div class="col-sm-6">
                   <p>{{ usuario.nombre }}</p>
                 </div>
               </div>
 
               <div class="form-group row">
-                <label class="col-sm-6 col-form-label">Apellidos:</label>
+                <label class="col-sm-6 col-form-label"><b>Apellidos:</b></label>
                 <div class="col-sm-6">
                   <p>{{ usuario.apellidos }}</p>
                 </div>
               </div>
 
               <div class="form-group row">
-                <label class="col-sm-6 col-form-label">Dirección:</label>
+                <label class="col-sm-6 col-form-label"><b>Dirección:</b></label>
                 <div class="col-sm-6">
                   <p>{{ usuario.direccion }}</p>
                 </div>
               </div>
 
               <div class="form-group row">
-                <label class="col-sm-6 col-form-label">Fecha de Nacimiento:</label>
+                <label class="col-sm-6 col-form-label"><b>Fecha de Nacimiento:</b></label>
                 <div class="col-sm-6">
                   <p>{{ usuario.fechaNacimiento }}</p>
                 </div>
               </div>
 
               <div class="form-group row">
-                <label class="col-sm-6 col-form-label">Teléfono:</label>
+                <label class="col-sm-6 col-form-label"><b>Teléfono:</b></label>
                 <div class="col-sm-6">
                   <p>{{ usuario.telefono }}</p>
                 </div>
               </div>
 
               <div class="form-group row">
-                <label class="col-sm-6 col-form-label">Género:</label>
+                <label class="col-sm-6 col-form-label"><b>Género:</b></label>
                 <div class="col-sm-6">
                   <p>{{ usuario.genero }}</p>
                 </div>
               </div>
               <div class="form-group row">
 
-                <div class="col-sm-12">
+                <div class="col-sm-12 mb-5">
                   <router-link to="/historial">
-                    <b-button variant="secondary" >Ver Historial</b-button>
+                    <b-button variant="secondary">Ver Historial</b-button>
                   </router-link>
                 </div>
               </div>

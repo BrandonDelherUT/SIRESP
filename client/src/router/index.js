@@ -6,6 +6,7 @@ import ReservaAlojamiento from '../views/Guest/ReservaAlojamiento.vue'
 import PagoView from '../views/Guest/PagoView.vue'
 import Perfil from '../components/Inicio/Profile.vue'
 import Historial from '../views/Guest/Historial.vue'
+import RegistroAnfitrion from '../views/Host/RegistroAnfitrion.vue'
 
 
 
@@ -45,6 +46,11 @@ const router = new VueRouter({
       name: 'historial',
       component: Historial
     },
+    {
+      path:'/registroAnfitrion',
+      name:'registroAnfitrion',
+      component: RegistroAnfitrion
+    }
 
   ]
 })
