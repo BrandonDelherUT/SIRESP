@@ -36,7 +36,6 @@ Validator.localize('es', {
     date_format : 'El formato debe ser dd/MM/yyyy',
     date_between : "No esta en las fechas de 10/09/1954 al 20/09/2005",
     alpha_num: 'Solo acepta numeros y letras',
-    max : (field,[num])=>`Solo ${num} como maximo`, // en esta campo se le pone ()=> por que recibira parametros- el nombre del campo  y el valor 
     credit_card:"Debe ser una tarjeta de crédito/debito válida.",
     email:"El correo debe ser valido",
     alpha_dash:"Solo puede contener caracteres alfabéticos, números, guiones o guiones bajos.",
