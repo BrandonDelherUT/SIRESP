@@ -316,8 +316,12 @@ export default {
     onLoginSubmit() {
       this.$validator.validate().then(async (valid) => {
         if (!valid) {
+<<<<<<<< HEAD:client/client/src/components/Inicio/Navbar.vue
         } else {
          
+========
+        } else {  
+>>>>>>>> pr/1:client/src/components/Inicio/Navbar.vue
           const response = await axios.post('http://localhost:8080/login', { username:this.loginEmail, password:this.loginPassword });
           const token = response.data.token;
           const claims =JSON.parse(window.atob(token.split(".")[1]));

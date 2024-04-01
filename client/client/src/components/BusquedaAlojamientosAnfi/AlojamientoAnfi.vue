@@ -35,7 +35,10 @@
                 <p class="card-text airbnb-card-text"><strong>Ubicación: </strong>{{ myDataa.autor }}</p>
                 <p class="card-text airbnb-card-text"><strong>Número de huéspedes: </strong>{{ myDataa.fechaPub }}</p>
                 <p class="card-text airbnb-card-text"><strong>Precio: </strong>{{ myDataa.precio }}</p>
+<<<<<<<< HEAD:client/client/src/components/BusquedaAlojamientosAnfi/AlojamientoAnfi.vue
                 <button class="btn btn-danger">Desabilitar</button>
+========
+>>>>>>>> pr/1:client/src/components/Inicio/BusquedaAlojamientos.vue
               </div>
             </div>
           </div>

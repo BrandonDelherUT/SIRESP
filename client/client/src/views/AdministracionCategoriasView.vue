@@ -1,7 +1,7 @@
 <template>
   <b-container fluid>
     <CategoriesNavbar :categories="categories" />
-    <Navbar />
+    <NavbarUser />
     <b-container fluid class="main-content d-flex justify-content-center align-items-center">
       <div class="admin-container">
         <AdministracionCategorias />
@@ -43,14 +43,14 @@
 
 
 <script>
-import Navbar from "../components/Navbar.vue";
-import CategoriesNavbar from "../components/CategoriesNavbar.vue";
-import AdministracionCategorias from "../components/AdministracionCategorias.vue";
+import NavbarUser from "../../components/Inicio/NavbarUser.vue";
+import CategoriesNavbar from "../../components/Inicio/CategoriesNavbar.vue";
+import AdministracionCategorias from "../../components/AdminCategorias/AdministracionCategorias.vue";
 
 export default {
   name: 'Plantilla',
   components: {
-    Navbar,
+    NavbarUser,
     CategoriesNavbar,
     AdministracionCategorias
   },
