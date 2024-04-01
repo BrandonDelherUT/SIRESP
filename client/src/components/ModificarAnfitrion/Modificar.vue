@@ -6,7 +6,7 @@
           <div class="card-header airbnb-header">
             <h5 class="card-title text-center mb-0">
               <i class="title"></i>
-              Registro de Anfitrión
+              Modificacion de Anfitrión
             </h5>
           </div>
           <div class="card-body">
@@ -55,9 +55,7 @@
 </template>
 
 <script>
-import axios from 'axios';
-import instace from '../../config/http-client.gateway'
-const token = localStorage.getItem("token");
+
 export default {
   data() {
     return {
@@ -74,41 +72,22 @@ export default {
   },
   methods: {
     onSubmit() {
-        this.$validator.validateAll().then(async result => {
-          if (result) {
-            console.log(this.form.identificationImage)
-            const formData = new FormData();
-          formData.append('profilePicture', this.form.identificationImage);
-          
-          const response2 = await axios.post("http://localhost:8080/api-sirep/host/upload", formData, {
-            headers: {
-              'Authorization': `Bearer ${token}`
-            },
-          });
-          const imagen = response2.data;
-          this.form.identificationImage = imagen;
-          console.log(this.form.identificationImage)
-          this.insertHost();
-          } else {
-            console.log('Form is invalid');
-          }
-        });
-      },
-      async insertHost(){
-        try {
-          console.log(this.form)
-          const response = await instace.doPost('/host/', {
-            curp: this.form.curp, 
-            identificationImage: this.form.identificationImage, 
-            rfc: this.form.rfc, 
-            user:{id:1}
-          });
-          console.log(response);
-        } catch (error) {
+      this.$validator.validateAll().then((valid) => {
+        if (valid) {
+          alert("Formulario enviado");
+        } else {
+          console.log("Falta completar campos");
           
         }
+      });
       },
-
+    onFileChange(event) {
+      const file = event.target.files[0];
+      if (file) {
+        this.form.identificationImage = file;
+        this.imageName = file.name;
+      }
+    }
   }
 };
 </script>

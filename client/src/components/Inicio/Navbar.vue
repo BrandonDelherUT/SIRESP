@@ -268,7 +268,7 @@
 
 
 <script>
-
+import axios from 'axios';
 export default {
   name: 'Navbar',
   data() {
@@ -286,6 +286,8 @@ export default {
       gender: "",
       profileImage: null,
       isMobile: window.innerWidth <= 768,
+      loginEmail:"",
+      loginPassword:""
     };
   },
 
@@ -312,10 +314,23 @@ export default {
       this.isNavbarOpen = !this.isNavbarOpen;
     },
     onLoginSubmit() {
-      this.$validator.validate().then((valid) => {
+      this.$validator.validate().then(async (valid) => {
         if (!valid) {
-        } else {
-          console.log('Email:', this.loginEmail, 'Password:', this.loginPassword);
+        } else {  
+          const response = await axios.post('http://localhost:8080/login', { username:this.loginEmail, password:this.loginPassword });
+          const token = response.data.token;
+          const claims =JSON.parse(window.atob(token.split(".")[1]));
+          console.log("claims:")
+          console.log(claims)
+          // Guardar el token en el almacenamiento local
+          localStorage.setItem('token', token);
+         
+          localStorage.setItem('isAuthenticated', true);
+
+          
+
+          // Redirigir al usuario a una página de inicio o a donde sea necesario
+          this.$router.push('/userHome');
           this.showLoginModal = false;
         }
       });

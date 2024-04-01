@@ -24,6 +24,7 @@
         
       </div>
       <div class="col-md-9">
+        <h3>Mis alojamientos</h3>
         <div class="row mt-4">
           <div class="col-md-4 col-sm-6 mb-4" v-for="(myDataa, index) in myData" :key="index" draggable="true" @dragstart="handleDragStart($event, myDataa)">
             <div class="card h-100 airbnb-card">
@@ -34,6 +35,7 @@
                 <p class="card-text airbnb-card-text"><strong>Ubicación: </strong>{{ myDataa.autor }}</p>
                 <p class="card-text airbnb-card-text"><strong>Número de huéspedes: </strong>{{ myDataa.fechaPub }}</p>
                 <p class="card-text airbnb-card-text"><strong>Precio: </strong>{{ myDataa.precio }}</p>
+                <button class="btn btn-danger">Desabilitar</button>
               </div>
             </div>
           </div>

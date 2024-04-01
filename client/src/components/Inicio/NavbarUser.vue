@@ -92,7 +92,7 @@
 
     <nav class="navbar">
       <div class="container">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="/userHome">
           <img src="../../assets/img/Logo.jpeg" alt="Vue.js" width="40" height="40" />
           <span class="title">SIRESP</span>
         </a>
@@ -104,15 +104,22 @@
             <div class="dropdown-menu" v-if="isDropdownOpen" @click="toggleDropdown">
               <a class="dropdown-item" href="/perfil">Ver Perfil</a>
               <a class="dropdown-item" v-on:click="showModal = true">Modificar Perfil</a>
-              <a class="dropdown-item" href="/registroAnfitrion">Registrarse como Anfitrión</a>
-              <a class="dropdown-item" href="/">Cerrar Sesión</a>
+              <a v-if="isUser||isAdmin" class="dropdown-item" href="/registroAnfitrion">Registrarse como Anfitrión</a>
+              <a v-if="isHost||isAdmin" class="dropdown-item" href="/modificarAnfitrion">Modificar datos de Anfitrión</a>
+              <a v-if="isHost||isAdmin" class="dropdown-item" href="/alojamiento">Mostrar mis alojamientos</a>
+              <a v-if="isHost||isAdmin" class="dropdown-item" href="/insertarAlojamiento">Insertar Alojamiento</a>
+              <a v-if="isHost||isAdmin" class="dropdown-item" href="/modificarAlojamiento">Modificar Alojamiento</a>
+              <a v-if="isAdmin" class="dropdown-item" href="/aprobacionAlojamientos">Aprobacion de Alojamientos</a>
+              <a v-if="isAdmin" class="dropdown-item" href="/administrarCategorias">Administrar Categorias</a>
+              <a class="dropdown-item" style="background-color: #a00404;" @click="logout">Cerrar Sesión</a>
             </div>
           </div>
         </div>
+        
 
 
         <div class="bottom-tab-nav" v-if="isMobile">
-          <a class="tab-item" href="/">
+          <a class="tab-item" href="/userHome">
             <b-icon icon="house-door" font-scale="1.5"></b-icon>
             <span>Inicio</span>
           </a>
@@ -250,6 +257,7 @@ export default {
     };
   },
   mounted() {
+    this.checkUserRole();
     window.addEventListener('resize', this.handleResize);
   },
   beforeDestroy() {
@@ -283,6 +291,21 @@ export default {
     handleResize() {
       this.isMobile = window.innerWidth <= 768;
     },
-  },
+    logout() {
+      localStorage.removeItem('token'); 
+      localStorage.removeItem('isAuthenticated');
+      this.$router.push('/');
+      window.location.reload();
+    },
+    checkUserRole() {
+      const userRole = localStorage.getItem('token');
+      if (userRole) {
+        const claims = JSON.parse(atob(userRole.split('.')[1]));
+        this.isAdmin = claims.authorities.includes('[{\"authority\":\"ROLE_ADMIN\"}]'); // Verificar si el usuario es administrador
+        this.isUser = claims.authorities.includes('[{\"authority\":\"ROLE_USER\"}]'); // Verificar si el usuario es usuario
+        this.isHost = claims.authorities.includes('[{\"authority\":\"ROLE_HOST\"}]'); // Verificar si el usuario es anfitrión
+      }
+    }
+  }
 };
 </script>
