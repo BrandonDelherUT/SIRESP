@@ -2,21 +2,21 @@
   <div>
     <b-container fluid>
     <CategoriesNavbar />
-    <Navbar />
+    <NavbarUser />
       <HistorialVerifAlojamientos />
     </b-container>
   </div>
   </template>
   
   <script>
-    import Navbar from "../components/Navbar.vue";
-    import CategoriesNavbar from "../components/CategoriesNavbar.vue";
-    import HistorialVerifAlojamientos from "../components/HistorialVerifAlojamientos.vue"
+  import NavbarUser from "../../components/Inicio/NavbarUser.vue";
+    import CategoriesNavbar from "../../components/Inicio/CategoriesNavbar.vue";
+    import HistorialVerifAlojamientos from "../../components/HistVerifAlojView/HistorialVerifAlojamientos.vue"
 
     export default {
       name: 'HistorialVerifAlojView',
       components: {
-        Navbar,
+        NavbarUser,
         CategoriesNavbar,
         HistorialVerifAlojamientos
       }

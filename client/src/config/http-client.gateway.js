@@ -1,6 +1,6 @@
 import { decrypt, encrypt } from "../config/aes";
 import instance from "./axios";
-const token = localStorage.getItem("token");
+const token = sessionStorage.getItem("token");
 instance.interceptors.request.use(
     //cambiar el objeto del data por la cadena encryptada
 
@@ -10,12 +10,15 @@ instance.interceptors.request.use(
         const url = config.url;
         const method=config.method
       
-        config.headers = {
+        if(url!="/user/"){
+            config.headers = {
             
-            Authorization : `Bearer ${token}`,
-            'Content-Type': 'application/json',
-        };  
+                Authorization : `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            };  
+        }
       
+        
        
         if (data != null && url!="/user/upload"&&url!="/host/upload"&&method!="GET"&&method!="DELETE") {
             console.log("Entro Aqui?")

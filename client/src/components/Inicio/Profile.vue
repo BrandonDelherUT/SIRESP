@@ -12,7 +12,7 @@
               <h3 class="text-center mt-5">Información de Usuario</h3>
               <b-row>
                 <b-col cols="12" class="justify-content-center d-flex align-items-center text-justify">
-                  <b-img :src="usuario.imagenPerfil" rounded="circle" alt="Circle image"></b-img>
+                  <b-img :src="user.profilePicture" rounded="circle" alt="Circle image"></b-img>
 
                 </b-col>
               </b-row>
@@ -22,42 +22,42 @@
               <div class="form-group row">
                 <label class="col-sm-6 col-form-label"><b>Nombre:</b></label>
                 <div class="col-sm-6">
-                  <p>{{ usuario.nombre }}</p>
+                  <p>{{ user.names }}</p>
                 </div>
               </div>
 
               <div class="form-group row">
                 <label class="col-sm-6 col-form-label"><b>Apellidos:</b></label>
                 <div class="col-sm-6">
-                  <p>{{ usuario.apellidos }}</p>
+                  <p>{{ user.lastName }}</p>
                 </div>
               </div>
 
               <div class="form-group row">
                 <label class="col-sm-6 col-form-label"><b>Dirección:</b></label>
                 <div class="col-sm-6">
-                  <p>{{ usuario.direccion }}</p>
+                  <p>{{ user.address }}</p>
                 </div>
               </div>
 
               <div class="form-group row">
                 <label class="col-sm-6 col-form-label"><b>Fecha de Nacimiento:</b></label>
                 <div class="col-sm-6">
-                  <p>{{ usuario.fechaNacimiento }}</p>
+                  <p>{{ user.date}}</p>
                 </div>
               </div>
 
               <div class="form-group row">
                 <label class="col-sm-6 col-form-label"><b>Teléfono:</b></label>
                 <div class="col-sm-6">
-                  <p>{{ usuario.telefono }}</p>
+                  <p>{{ user.phone }}</p>
                 </div>
               </div>
 
               <div class="form-group row">
                 <label class="col-sm-6 col-form-label"><b>Género:</b></label>
                 <div class="col-sm-6">
-                  <p>{{ usuario.genero }}</p>
+                  <p>{{ user.gender }}</p>
                 </div>
               </div>
               <div class="form-group row">
@@ -88,6 +88,8 @@
 import NavbarUser from "../Inicio/NavbarUser.vue";
 import CategoriesNavbar from "../Inicio/CategoriesNavbar.vue";
 
+import instance from "../../config/http-client.gateway";
+
 export default {
   name: 'Perfil',
   components: {
@@ -96,16 +98,32 @@ export default {
   },
   data() {
     return {
-      usuario: {
-        nombre: 'Juan',
-        apellidos: 'Pérez',
-        direccion: 'Calle 123, Ciudad',
-        fechaNacimiento: '01/01/1990',
-        telefono: '123-456-7890',
-        genero: 'Masculino',
-        imagenPerfil: 'https://via.placeholder.com/150' // Aquí deberías poner la ruta de la imagen de perfil del usuario
+      user: {
+
       }
     }
+  },
+  methods: {
+    async getUsers() {
+      const token = sessionStorage.getItem('token')
+      console.log(token);
+      const claims = JSON.parse(atob(token.split('.')[1]));
+      const username = claims.sub
+      console.log(username)
+      const response = await instance.doGet(`/user/username/${username}`)
+      const fechaNum = response.data.date;
+      let fecha = new Date(fechaNum);
+      
+      let fechaFormateada = fecha.toLocaleDateString('es-ES');;
+      console.log(fechaFormateada);
+
+      this.user = response.data;
+      this.user.date = fechaFormateada;
+      console.log(response);
+    }
+  },
+  mounted() {
+    this.getUsers()
   },
 
 

@@ -111,6 +111,12 @@
               <a v-if="isHost||isAdmin" class="dropdown-item" href="/modificarAlojamiento">Modificar Alojamiento</a>
               <a v-if="isAdmin" class="dropdown-item" href="/aprobacionAlojamientos">Aprobacion de Alojamientos</a>
               <a v-if="isAdmin" class="dropdown-item" href="/administrarCategorias">Administrar Categorias</a>
+              <a v-if="isAdmin" class="dropdown-item" href="/administrarUsuarios">Administrar Usuarios</a>
+              <a v-if="isAdmin" class="dropdown-item" href="/historialVerifAnf">Historial de Anfitriones</a>
+              <a v-if="isAdmin" class="dropdown-item" href="/historialVerifAloj">Historial de Alojamientos</a>
+              <a v-if="isAdmin" class="dropdown-item" href="/historialPagos">Historial de Pagos</a>
+              <a v-if="isAdmin" class="dropdown-item" href="/historialReservas">Historial de Reservas</a>
+              <a v-if="isAdmin" class="dropdown-item" href="/historialCancelaciones">Historial de Cancelaciones</a>
               <a class="dropdown-item" style="background-color: #a00404;" @click="logout">Cerrar Sesión</a>
             </div>
           </div>
@@ -292,13 +298,13 @@ export default {
       this.isMobile = window.innerWidth <= 768;
     },
     logout() {
-      localStorage.removeItem('token'); 
-      localStorage.removeItem('isAuthenticated');
+      sessionStorage.removeItem('token'); 
+      sessionStorage.removeItem('isAuthenticated');
       this.$router.push('/');
       window.location.reload();
     },
     checkUserRole() {
-      const userRole = localStorage.getItem('token');
+      const userRole = sessionStorage.getItem('token');
       if (userRole) {
         const claims = JSON.parse(atob(userRole.split('.')[1]));
         this.isAdmin = claims.authorities.includes('[{\"authority\":\"ROLE_ADMIN\"}]'); // Verificar si el usuario es administrador

@@ -14,6 +14,12 @@ import AprobacionAnfitrion from '../views/Admin/AprobacionAnfitriones.vue'
 import AprobacionAlojamientos from '../views/Admin/AprobacionAlojamientos.vue'
 import ModificarAlojamiento from '../views/Host/ModificarAlojamiento.vue'
 import AdministracionCategorias from '../views/Admin/AdministracionCategoriasView.vue'
+import AdministracionUsuarios from '../views/Admin/AdministrarUsuarios.vue'
+import HistVerifAnfView from '../views/Admin/HistVerifAnfView.vue'
+import HistVerifAlojView from '../views/Admin/HistVerifAlojView.vue'
+import HistorialPagos from '../views/Admin/HistorialPagos.vue'
+import HistorialReservas from '../views/Admin/HistorialReservas.vue'
+import HistorialCancelaciones from '../views/Admin/HistorialCancelaciones.vue'
 
 Vue.use(VueRouter);
 
@@ -105,7 +111,44 @@ const routes = [
     component: AdministracionCategorias,
     meta: { requiresAuth: true }
 
+  },
+  {
+    path:'/administrarUsuarios',
+    name:'administrarUsuarios',
+    component: AdministracionUsuarios,
+    meta: { requiresAuth: true }
+  },
+  {
+    path:'/historialVerifAnf',
+    name:'historialVerifAnf',
+    component: HistVerifAnfView,
+    meta: { requiresAuth: true }
+  },
+  {
+    path:'/historialVerifAloj',
+    name:'historialVerifAloj',
+    component: HistVerifAlojView,
+    meta: { requiresAuth: true }
+  },
+  {
+    path:'/historialPagos',
+    name:'historialPagos',
+    component: HistorialPagos,
+    meta: { requiresAuth: true }
+  },
+  {
+    path:'/historialReservas',
+    name:'historialReservas',
+    component: HistorialReservas,
+    meta: { requiresAuth: true }
+  },
+  {
+    path:'/historialCancelaciones',
+    name:'historialCancelaciones',
+    component: HistorialCancelaciones,
+    meta: { requiresAuth: true }
   }
+  
 ];
 
 const router = new VueRouter({
@@ -115,8 +158,8 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = localStorage.getItem('isAuthenticated');
-  const userRole = localStorage.getItem('token');
+  const isAuthenticated = sessionStorage.getItem('isAuthenticated');
+  const userRole = sessionStorage.getItem('token');
 
   // Verificar si la ruta requiere autenticación
   if (to.matched.some(record => record.meta.requiresAuth)) {

@@ -2,21 +2,21 @@
   <div>
     <b-container fluid>
     <CategoriesNavbar />
-    <Navbar />
+    <NavbarUser />
       <HistorialVerifAnfitriones />
     </b-container>
   </div>
   </template>
   
   <script>
-    import Navbar from "../components/Navbar.vue";
-    import CategoriesNavbar from "../components/CategoriesNavbar.vue";
-    import HistorialVerifAnfitriones from "../components/HistorialVerifAnfitriones.vue";
+    import NavbarUser from "../../components/Inicio/NavbarUser.vue";
+    import CategoriesNavbar from "../../components/Inicio/CategoriesNavbar.vue";
+    import HistorialVerifAnfitriones from "../../components/HistVerifAnfView/HistorialVerifAnfitriones.vue";
 
     export default {
       name: 'Plantilla',
       components: {
-        Navbar,
+        NavbarUser,
         CategoriesNavbar,
         HistorialVerifAnfitriones
       }
